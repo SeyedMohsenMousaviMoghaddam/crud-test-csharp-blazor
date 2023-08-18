@@ -1,4 +1,11 @@
 
+using IbanNet.DependencyInjection;
+using IbanNet.DependencyInjection.ServiceProvider;
+using IbanNet.Registry.Swift;
+using Mc2.CrudTest.Shared.Infrastructure.Data;
+using Microsoft.Extensions.DependencyInjection;
+using ZymLabs.NSwag.FluentValidation;
+
 namespace Mc2.CrudTest.Presentation;
 
 public static class Injection
@@ -7,6 +14,23 @@ public static class Injection
         IConfiguration configuration, IWebHostEnvironment _env)
     {
         services.AddProblems(configuration, _env);
+
+        services.AddHttpContextAccessor();
+        services.AddHealthChecks()
+            .AddDbContextCheck<ApplicationDbContext>();
+        services.AddIbanNet(opts => opts
+        .UseRegistryProvider(new SwiftRegistryProvider())
+        //.WithRule<MyCustomRule>()
+        );
+        services.AddScoped(provider =>
+        {
+            var validationRules = provider.GetService<IEnumerable<FluentValidationRule>>();
+            var loggerFactory = provider.GetService<ILoggerFactory>();
+
+            return new FluentValidationSchemaProcessor(provider, validationRules, loggerFactory);
+        });
+
+
         services.AddDependantServices();
         if (_env.EnvironmentName != "Production") services.addSwagger();
 
@@ -16,6 +40,7 @@ public static class Injection
 
     private static IServiceCollection AddDependantServices(this IServiceCollection serviceCollection)
     {
+
         //serviceCollection.AddScoped<I_, _>();
         return serviceCollection;
     }
