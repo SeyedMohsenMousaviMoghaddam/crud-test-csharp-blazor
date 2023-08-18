@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  mc2-crud-acceptance-test:
+    container_name: mc2-crud-acceptance-test
+    build:
+      context: .
+      dockerfile: Mc2.CrudTest/Mc2.CrudTest.AcceptanceTests/Dockerfile
+    networks:
+      - shared_network_test
+networks:
+  shared_network_test:
+    external: true

@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  mc2-crud-test:
+    image: ${DOCKER_REGISTRY:-mc}/mc2-crud-test:${PLATFORM:-linux}-${TAG:-latest}
+    ports:
+      - "57870:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1024m
+        reservations:
+          memory: 128m
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      TZ: 'Asia/Tehran'
+      PGTZ: 'Asia/Tehran'

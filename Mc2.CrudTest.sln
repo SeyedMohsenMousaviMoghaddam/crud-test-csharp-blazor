@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F28D8811-8525-4BDE-BAF4-339E5FEEEB00}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitlab-ci.yml = .gitlab-ci.yml
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2F3A9691-739D-4531-A616-F7E7074021D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mc2.CrudTest", "Mc2.CrudTest", "{AE253795-D202-4D48-A2D3-ACC3E5968DB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mc2.CrudTest.AcceptanceTests", "Mc2.CrudTest.AcceptanceTests", "{3401DD17-0228-4505-AD85-D281682098C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.AcceptanceTests", "Mc2.CrudTest\Mc2.CrudTest.AcceptanceTests\Mc2.CrudTest.AcceptanceTests.csproj", "{65BC7BC4-8279-4368-BB61-37D6CE9706B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mc2.CrudTest.Presentation", "Mc2.CrudTest.Presentation", "{E41857C2-EEC6-4385-BB8E-E753C66F125F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{9FDFDA67-AF4B-4924-A1B0-17C1F049F191}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{2E7E8F56-86E6-48CA-B07A-B11237ABC746}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{9CE0278A-9839-49C0-AB22-2AD6CFAEFE6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.Client", "Mc2.CrudTest\Mc2.CrudTest.Presentation\Client\Mc2.CrudTest.Presentation.Client.csproj", "{EB2AB3A1-8568-4D8F-9F63-D26C24817E40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.Server", "Mc2.CrudTest\Mc2.CrudTest.Presentation\Server\Mc2.CrudTest.Presentation.Server.csproj", "{52E6D11D-53F6-4E39-AD4F-60DB434D49E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.Shared", "Mc2.CrudTest\Mc2.CrudTest.Presentation\Shared\Mc2.CrudTest.Presentation.Shared.csproj", "{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F3A9691-739D-4531-A616-F7E7074021D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3A9691-739D-4531-A616-F7E7074021D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3A9691-739D-4531-A616-F7E7074021D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3A9691-739D-4531-A616-F7E7074021D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BC7BC4-8279-4368-BB61-37D6CE9706B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BC7BC4-8279-4368-BB61-37D6CE9706B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BC7BC4-8279-4368-BB61-37D6CE9706B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BC7BC4-8279-4368-BB61-37D6CE9706B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB2AB3A1-8568-4D8F-9F63-D26C24817E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB2AB3A1-8568-4D8F-9F63-D26C24817E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB2AB3A1-8568-4D8F-9F63-D26C24817E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB2AB3A1-8568-4D8F-9F63-D26C24817E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E6D11D-53F6-4E39-AD4F-60DB434D49E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E6D11D-53F6-4E39-AD4F-60DB434D49E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E6D11D-53F6-4E39-AD4F-60DB434D49E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E6D11D-53F6-4E39-AD4F-60DB434D49E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3401DD17-0228-4505-AD85-D281682098C7} = {AE253795-D202-4D48-A2D3-ACC3E5968DB6}
+		{65BC7BC4-8279-4368-BB61-37D6CE9706B2} = {3401DD17-0228-4505-AD85-D281682098C7}
+		{E41857C2-EEC6-4385-BB8E-E753C66F125F} = {AE253795-D202-4D48-A2D3-ACC3E5968DB6}
+		{9FDFDA67-AF4B-4924-A1B0-17C1F049F191} = {E41857C2-EEC6-4385-BB8E-E753C66F125F}
+		{2E7E8F56-86E6-48CA-B07A-B11237ABC746} = {E41857C2-EEC6-4385-BB8E-E753C66F125F}
+		{9CE0278A-9839-49C0-AB22-2AD6CFAEFE6A} = {E41857C2-EEC6-4385-BB8E-E753C66F125F}
+		{EB2AB3A1-8568-4D8F-9F63-D26C24817E40} = {9FDFDA67-AF4B-4924-A1B0-17C1F049F191}
+		{52E6D11D-53F6-4E39-AD4F-60DB434D49E7} = {2E7E8F56-86E6-48CA-B07A-B11237ABC746}
+		{D2B8F5F4-B3D8-48D4-BAC4-59F02FAFE787} = {9CE0278A-9839-49C0-AB22-2AD6CFAEFE6A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B5A26C9-68C1-49D9-9F32-AF907A1730C2}
+	EndGlobalSection
+EndGlobal

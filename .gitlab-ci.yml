@@ -1,0 +1,26 @@
+stages:
+  - staging
+  - production
+
+staging:
+  stage: staging
+  script:
+    - docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml -f ./docker-compose.vs.staging.yml  build
+    - docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml -f ./docker-compose.vs.staging.yml --ansi never up -d --no-build
+  only:
+    - main
+  tags:
+    - shell
+  except:
+    - tags
+production:
+  stage: production
+  script:
+    - docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml -f ./docker-compose.vs.production.yml  build
+    - docker-compose -f ./docker-compose.yml -f ./docker-compose.override.yml -f ./docker-compose.vs.production.yml --ansi never up -d --no-build
+  only:
+    - master
+  tags:
+    - production-shell
+  except:
+    - tags
