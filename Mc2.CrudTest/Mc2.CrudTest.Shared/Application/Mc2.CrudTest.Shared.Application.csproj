@@ -7,8 +7,8 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <RootNamespace>CleanArchitecture.Application</RootNamespace>
-    <AssemblyName>CleanArchitecture.Application</AssemblyName>
+    <RootNamespace>Mc2.CrudTest.Shared.Application</RootNamespace>
+    <AssemblyName>Mc2.CrudTest.Shared.Application</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

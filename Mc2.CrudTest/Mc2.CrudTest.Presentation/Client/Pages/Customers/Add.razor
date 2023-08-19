@@ -1,0 +1,48 @@
+﻿@page "/customers/createcustomer"
+@using Mc2.CrudTest.Presentation.Shared.Customers
+@using Mc2.CrudTest.Presentation.Client.Services.Customers
+@inject IAlertService AlertService
+@inject ICustomerService CustomerService
+@inject NavigationManager navManager
+@inject Mc2.CrudTest.Presentation.Client.Shared.PageHistoryState PageHistoryState
+
+<h1>Create Customer</h1>
+<br />
+
+<Form ButtonText="Create Customer" customer="@customer" loading="@loading"
+      OnValidSubmit="@CreateCustomer" />
+
+@code {
+    bool loading = false;
+
+    Customer customer = new Customer
+        {
+            Firstname = "",
+            Lastname = "",
+            Gender = 0,
+            PhoneNumber = ""
+        };
+    async Task CreateCustomer()
+    {
+        loading = true;
+        try
+        {
+            await CustomerService.AddCustomer(customer);
+            AlertService.Success("Customer added successfully", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack())
+            {
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else
+            {
+                navManager.NavigateTo("/customers/1");
+            }
+        }
+        catch (Exception ex)
+        {
+            AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

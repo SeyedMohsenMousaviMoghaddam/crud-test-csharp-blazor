@@ -10,7 +10,7 @@ services:
       - shared_network
     restart: always
     volumes:
-      - ./Mc2.CrudTest/Mc2.CrudTest.Presentation/Server/appsettings.json:/App/appsettings.json  
+      - ./Mc2.CrudTest/Mc2.CrudTest.Presentation/Server/appsettings.json:/app/appsettings.json  
 networks:
   shared_network:
     external: true

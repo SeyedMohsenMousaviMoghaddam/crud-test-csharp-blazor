@@ -7,8 +7,7 @@
       "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/index.html",
       "commandVersion": "1.0",
       "serviceActions": {
-        "mc2-crud-test": "StartDebugging",
-        "mc2-crud-test-postgres": "StartWithoutDebugging"
+        "mc2-crud-test": "StartDebugging"
       }
     }
   }

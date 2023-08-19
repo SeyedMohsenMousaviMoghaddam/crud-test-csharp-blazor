@@ -1,6 +1,6 @@
 ﻿using Mc2.CrudTest.Shared.Domain.Entities;
 
-namespace Mc2.CrudTest.Shared.Application.Customers.Queries.GetCustomers;
+namespace Mc2.CrudTest.Shared.Application.Customers.Queries.GetCustomer;
 
 public class CustomerDto
 {

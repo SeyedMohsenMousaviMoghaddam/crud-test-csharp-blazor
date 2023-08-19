@@ -1,0 +1,57 @@
+﻿@page "/customers/updatecustomer/{id}"
+@using Mc2.CrudTest.Presentation.Shared.Customers
+@using Mc2.CrudTest.Presentation.Client.Services.Customers
+@inject IAlertService AlertService
+@inject ICustomerService CustomerService
+@inject NavigationManager navManager
+@inject Mc2.CrudTest.Presentation.Client.Shared.PageHistoryState PageHistoryState
+
+<h1>Edit Customer</h1>
+<br />
+
+<Form ButtonText="Update Customer" customer="@customer" loading="@loading"
+      OnValidSubmit="@UpdateCustomer" />
+
+@code {
+    bool loading = false;
+
+    [Parameter]
+    public string Id { get; set; }
+
+    Customer customer = new Customer
+        {
+            Firstname = "",
+            Lastname = "",
+            Gender = 0,
+            PhoneNumber = ""
+        };
+
+    protected async override Task OnParametersSetAsync()
+    {
+        customer = await CustomerService.GetCustomer(int.Parse(Id));
+    }
+
+    async Task UpdateCustomer()
+    {
+        loading = true;
+        try
+        {
+            await CustomerService.UpdateCustomer(customer);
+            AlertService.Success("Customer updated successfully", keepAfterRouteChange: true);
+            if (PageHistoryState.CanGoBack())
+            {
+                navManager.NavigateTo(PageHistoryState.GetGoBackPage());
+            }
+            else
+            {
+                navManager.NavigateTo("/customers/1");
+            }
+        }
+        catch (Exception ex)
+        {
+            AlertService.Error(ex.Message);
+            loading = false;
+            StateHasChanged();
+        }
+    }
+}

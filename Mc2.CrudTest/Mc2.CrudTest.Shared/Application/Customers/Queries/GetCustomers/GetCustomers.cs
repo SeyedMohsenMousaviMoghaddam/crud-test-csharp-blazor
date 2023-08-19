@@ -1,13 +1,17 @@
 ﻿using Mc2.CrudTest.Shared.Application.Common.Interfaces;
 using Mc2.CrudTest.Shared.Application.Common.Models;
+using Mc2.CrudTest.Shared.Application.Customers.Queries.GetCustomer;
+using Mc2.CrudTest.Shared.Application.Helper;
+using Mc2.CrudTest.Shared.Domain.Entities;
 using Mc2.CrudTest.Shared.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mc2.CrudTest.Shared.Application.Customers.Queries.GetCustomers;
 
 
-public record GetCustomersQuery : IRequest<CustomersVm>;
+public record GetCustomersQuery(int page, string? name) : IRequest<PagedResult<CustomerDto>>;
 
-public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, CustomersVm>
+public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, PagedResult<CustomerDto>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -18,20 +22,26 @@ public class GetCustomersQueryHandler : IRequestHandler<GetCustomersQuery, Custo
         _mapper = mapper;
     }
 
-    public async Task<CustomersVm> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResult<CustomerDto>> Handle(GetCustomersQuery request, CancellationToken cancellationToken)
     {
-        return new CustomersVm
-        {
-            Genders = Enum.GetValues(typeof(GenderEnum))
-                .Cast<GenderEnum>()
-                .Select(p => new LookupDto { Id = (int)p, Title = p.ToString() })
-                .ToList(),
+        int pageSize = 5;
 
-            Lists = await _context.Customers
-                .AsNoTracking()
+        if (request.name != null && request.name.Trim() != "")
+        {
+            return _context.Customers
+                .Where(p => !p.IsDeleted && (p.Firstname!.Equals(request.name) ||
+                p.Lastname!.Equals(request.name)))
                 .ProjectTo<CustomerDto>(_mapper.ConfigurationProvider)
-                .OrderBy(t => t.Lastname)
-                .ToListAsync(cancellationToken)
-        };
+                .OrderBy(p => p.Id)
+                .GetPaged(request.page, pageSize);
+        }
+        else
+        {
+            return _context.Customers
+                .Where(p=> !p.IsDeleted)
+                .ProjectTo<CustomerDto>(_mapper.ConfigurationProvider)
+                .OrderBy(p => p.Id)
+                .GetPaged(request.page, pageSize);
+        }
     }
 }
